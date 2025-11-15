@@ -1,30 +1,19 @@
-# main.py (COMPLETO E 100% CORRIGIDO)
-from fastapi import FastAPI, Header, HTTPException, Depends
+# main.py (VERSÃO LIMPA - SEM CHAVE)
+from fastapi import FastAPI
 from typing import Optional
 
 app = FastAPI(
     title="FARO API Mockup (Módulo 5 - Risco Climático)",
-    description="Simulação de fachada da API protegida por API Key (para demonstração).",
-    version="1.0.0"
+    description="Simulação de fachada da API.",
+    version="2.0.0"
 )
 
-# Chave de API de Simulação (CORRETA)
-SIMULATED_API_KEY = "AIzaSyB5_RgL9ZUKGbxFrwkL6T0b8g9_Q2MGcuo"
-
-# Função de Validação da Chave
-def verify_api_key(x_api_key: Optional[str] = Header(None, alias="X-API-Key")):
-    """Verifica a chave de API fornecida no cabeçalho X-API-Key."""
-    if not x_api_key or x_api_key != SIMULATED_API_KEY:
-        raise HTTPException(
-            status_code=401,
-            detail="Acesso não autorizado. Chave de API inválida ou ausente no cabeçalho X-API-Key."
-        )
-
-# Endpoint Protegido (CORRIGIDO)
+# Endpoint (NÃO MAIS PROTEGIDO AQUI)
 @app.get("/api/v1/assessment/risk")
-async def get_risk_assessment(is_authorized: bool = Depends(verify_api_key)):
+async def get_risk_assessment():
     """
     Endpoint principal que simula o resultado da avaliação de risco climático.
+    O API Gateway faz a proteção.
     """
 
     simulated_data = {
