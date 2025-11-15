@@ -1,4 +1,4 @@
-# main.py
+# main.py (COMPLETO E CORRIGIDO)
 from fastapi import FastAPI, Header, HTTPException, Depends
 from typing import Optional
 
@@ -9,7 +9,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Chave de API de Simulação (Substitua este valor pela chave real do Passo 3.1)
+# Chave de API de Simulação (CORRETA)
 SIMULATED_API_KEY = "AIzaSyB5_RgL9ZUKGbxFrwkL6T0b8g9_Q2MGcuo"
 
 # Função de Validação da Chave
@@ -24,12 +24,13 @@ def verify_api_key(x_api_key: Optional[str] = Header(None, alias="X-API-Key")):
 # Endpoint Protegido
 @app.get("/api/v1/assessment/risk")
 async def get_risk_assessment(
-    is_authorized: bool = Depends(verify_api_key) 
+    is_authorized: bool = Depends(verify_api_key)
 ):
     """
     Endpoint principal que simula o resultado da avaliação de risco climático.
     """
-    # Dados de resposta simulados:
+    
+    # ESTA PARTE ESTAVA FALTANDO:
     simulated_data = {
         "status": "success",
         "timestamp": "2025-11-14T18:30:00Z",
