@@ -10,7 +10,7 @@ app = FastAPI(
 )
 
 # Chave de API de Simulação (Substitua este valor pela chave real do Passo 3.1)
-SIMULATED_API_KEY = "SUA_CHAVE_SECRETA_REAL_DO_VENDEDOR"
+SIMULATED_API_KEY = "AIzaSyB5_RgL9ZUKGbxFrwkL6T0b8g9_Q2MGcuo"
 
 # Função de Validação da Chave
 def verify_api_key(x_api_key: Optional[str] = Header(None, alias="X-API-Key")):
